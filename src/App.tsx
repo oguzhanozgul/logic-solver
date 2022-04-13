@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { VariableContextProvider } from "./contexts/variableContext";
+import LogicNode from "./components/LogicNode";
+import variable from "./types/variable";
+import VariableGroup from "./components/VariableGroup";
 
-function App() {
+function App(): React.ReactElement {
+  // Handle changes in operand values and setState
+  const displayFinalResult = (value: boolean): React.ReactNode => {
+    console.log(`Final result ${value}`);
+    return { value };
+  };
+
+  // Handle changes in operand values and setState
+  const mockVariableValues = (value: variable[]): React.ReactNode => {
+    return { value };
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <VariableContextProvider>
+      <>
+        <div className="App">
+          <h2>Logic Solver</h2>
+        </div>
+        <div className="working-area">
+          <VariableGroup />
+          <LogicNode passResolvedValue={displayFinalResult} />
+        </div>
+      </>
+    </VariableContextProvider>
   );
 }
 
