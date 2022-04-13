@@ -1,6 +1,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
 import "../App.css";
 import { VariableContext } from "../contexts/variableContext";
 import LogicNode from "./LogicNode";
@@ -109,7 +110,7 @@ export default function Operand({ position, passOperandValue }: Props): React.Re
   return (
     <div className={`operand ${resolvedValue ? "truthy" : "falsy"}`}>
       {operandVariable ? <label htmlFor="val">Variable: </label> : <label htmlFor="val">Value: </label>}
-      <select id="val" className="short-width" onChange={(e) => handleChange(e)} defaultValue="false">
+      {/* <select id="val" className="short-width" onChange={(e) => handleChange(e)} defaultValue="false">
         <option value="true">TRUE</option>
         <option value="false">FALSE</option>
         <option value="operation">Operation...</option>
@@ -120,7 +121,20 @@ export default function Operand({ position, passOperandValue }: Props): React.Re
             </option>
           );
         })}
-      </select>
+      </select> */}
+      <Form.Select id="val" onChange={(e) => handleChange(e)} defaultValue="false">
+        <option value="true">TRUE</option>
+        <option value="false">FALSE</option>
+        <option value="operation">Operation...</option>
+        {variableContext.variables?.map((element) => {
+          return (
+            <option value={element.name} key={element.id}>
+              {element.name}
+            </option>
+          );
+        })}
+      </Form.Select>
+
       {nodeRender()}
     </div>
   );

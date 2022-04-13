@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { VariableContextProvider } from "./contexts/variableContext";
 import LogicNode from "./components/LogicNode";
 import variable from "./types/variable";

@@ -1,6 +1,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext } from "react";
+import { Button } from "react-bootstrap";
 import "../App.css";
 import { VariableContext } from "../contexts/variableContext";
 import variable from "../types/variable";
@@ -13,9 +14,9 @@ export default function VariableGroup(): React.ReactElement {
 
   return (
     <div className="variable-group">
-      <button type="button" onClick={variableContext.addVariable}>
+      <Button variant="primary" onClick={variableContext.addVariable}>
         Add variable
-      </button>
+      </Button>
       {variableContext.variables?.map((element) => {
         return (
           <div key={element.id}>

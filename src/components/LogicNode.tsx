@@ -1,6 +1,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from "react";
+import { Badge } from "react-bootstrap";
 import operatorType from "../types/operatorType";
 import "../App.css";
 import Operand from "./Operand";
@@ -79,7 +80,9 @@ export default function LogicNode({ passResolvedValue }: Props): React.ReactElem
 
   return (
     <div className={`node ${resolvedValue ? "truthy" : "falsy"}`}>
-      <div className="result-display">{resolvedValue.toString()}</div>
+      <div className="result-display">
+        <Badge bg={resolvedValue ? "success" : "danger"}>{resolvedValue.toString()}</Badge>
+      </div>
       <div className="operand-group">
         <Operand position="left" passOperandValue={handleOperandValueChange} />
       </div>
