@@ -77,6 +77,7 @@ export default function Variable({
               }}
               value={resolvedValue.name}
               size="sm"
+              disabled
             />
           </Col>
           <Col xs={1}>

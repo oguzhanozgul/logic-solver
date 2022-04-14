@@ -72,6 +72,7 @@ function VariableContextProvider({ children }: Props): React.ReactElement {
         const addedVariable: variable = { id: newId, name: variableName, value: false };
         newVariables.push(addedVariable);
         setVariables(newVariables);
+        return addedVariable;
       }
     } else {
       const addedVariable: variable = { id: 0, name: variableName, value: false };
