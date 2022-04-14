@@ -3,7 +3,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { VariableContextProvider } from "./contexts/variableContext";
 import LogicNode from "./components/LogicNode";
-import VariableGroup from "./components/VariableGroup";
+import VariableGroup from "./components/Variable.group";
 
 function App(): React.ReactElement {
   const [finalResult, setFinalResult] = useState<boolean | null>(null);

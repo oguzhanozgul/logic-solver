@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Row, Col, Form } from "react-bootstrap";
 import "../App.css";
 import variable from "../types/variable";
+import VariableName from "./Variable.name";
 
 type Props = {
   variableValues: variable;
@@ -48,11 +49,10 @@ export default function Variable({
   };
 
   // Watch for changes in the option selected by the user and setState:
-  const handleNameChange = (e: React.SyntheticEvent): void => {
-    const target = e.target as HTMLInputElement;
+  const handleNameChange = (newName: string): void => {
     const newState: variable = {
       id: resolvedValue.id,
-      name: target.value,
+      name: newName,
       value: resolvedValue.value,
     };
     setResolvedValue(newState);
@@ -67,18 +67,7 @@ export default function Variable({
       <Form onSubmit={(e) => e.preventDefault()}>
         <Row>
           <Col xs={4}>
-            <Form.Control
-              id="name"
-              type="text"
-              placeholder="enter name..."
-              maxLength={8}
-              onChange={(e) => {
-                handleNameChange(e);
-              }}
-              value={resolvedValue.name}
-              size="sm"
-              disabled
-            />
+            <VariableName givenValues={resolvedValue} passVariableName={handleNameChange} />
           </Col>
           <Col xs={1}>
             <Form.Label>=</Form.Label>

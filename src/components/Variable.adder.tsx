@@ -9,19 +9,18 @@ import variable from "../types/variable";
 export default function VariableAdder(): React.ReactElement {
   const variableContext = useContext(VariableContext);
 
-  const [show, setShow] = useState<boolean>(false);
+  const [modalShow, setModalShow] = useState<boolean>(false);
   const [alertShow, setAlertShow] = useState<boolean>(false);
   const [variableName, setVariableName] = useState<string | null>(null);
-  //  variableContext.addVariable("dneme");
 
   const handleMainAddButtonClick = (): void => {
     setVariableName(null);
     setAlertShow(false);
-    setShow(true);
+    setModalShow(true);
   };
 
   const handleCancelClick = (): void => {
-    setShow(false);
+    setModalShow(false);
   };
 
   const handleAddClick = (): void => {
@@ -31,9 +30,9 @@ export default function VariableAdder(): React.ReactElement {
         setAlertShow(true);
         return;
       }
-      setShow(false);
+      setModalShow(false);
     }
-    setShow(false);
+    setModalShow(false);
   };
 
   const handleVariableNameChange = (e: React.SyntheticEvent): void => {
@@ -48,7 +47,7 @@ export default function VariableAdder(): React.ReactElement {
       </Button>
       <br />
 
-      <Modal show={show} onHide={handleCancelClick} size="sm" backdrop="static">
+      <Modal show={modalShow} onHide={handleCancelClick} size="sm" backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Add variable</Modal.Title>
         </Modal.Header>
@@ -60,7 +59,7 @@ export default function VariableAdder(): React.ReactElement {
             }}
           >
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Unique variable name</Form.Label>
+              <Form.Label>Enter variable name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder=""
