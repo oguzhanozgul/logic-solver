@@ -2,7 +2,7 @@
 ## Table of Contents
 1. [Introduction](#introduction)</br>
 2. [Screen Layout](#screen-layout)</br>
-  a. [Title and final result section](#yitle-and-the-final-result-section)</br>
+  a. [Title and final result section](#yitle-and-final-result-section)</br>
   b. [Variables section](#variables-section)</br>
   c. [Calculation section](#calculation-section)</br>
 3. [The Logic Node](#the-logic-node)</br>
