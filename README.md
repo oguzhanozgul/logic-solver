@@ -1,4 +1,6 @@
 # Logic solver
+View the application here:
+https://the-logic-solver.netlify.app
 ## Table of Contents
 1. [Introduction](#introduction)</br>
 2. [Screen Layout](#screen-layout)</br>
