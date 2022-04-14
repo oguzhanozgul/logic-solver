@@ -1,22 +1,17 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext } from "react";
-import { Button } from "react-bootstrap";
 import "../App.css";
 import { VariableContext } from "../contexts/variableContext";
-import variable from "../types/variable";
 import Variable from "./Variable";
-
-type variables = variable[];
+import VariableAdder from "./VariableAdder";
 
 export default function VariableGroup(): React.ReactElement {
   const variableContext = useContext(VariableContext);
 
   return (
     <div className="variable-group">
-      <Button variant="primary" onClick={variableContext.addVariable}>
-        Add variable
-      </Button>
+      <VariableAdder />
       {variableContext.variables?.map((element) => {
         return (
           <div key={element.id}>

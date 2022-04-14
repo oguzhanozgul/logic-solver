@@ -102,27 +102,14 @@ export default function Operand({ position, passOperandValue }: Props): React.Re
         setOperandValueSelection("true");
         setOperandVariable(null);
         setResolvedValue(true);
-        console.log("you deleted my variable :(");
       }
     }
   }, [variableContext.variables]);
 
   return (
     <div className={`operand ${resolvedValue ? "truthy" : "falsy"}`}>
-      {operandVariable ? <label htmlFor="val">Variable: </label> : <label htmlFor="val">Value: </label>}
-      {/* <select id="val" className="short-width" onChange={(e) => handleChange(e)} defaultValue="false">
-        <option value="true">TRUE</option>
-        <option value="false">FALSE</option>
-        <option value="operation">Operation...</option>
-        {variableContext.variables?.map((element) => {
-          return (
-            <option value={element.name} key={element.id}>
-              {element.name}
-            </option>
-          );
-        })}
-      </select> */}
-      <Form.Select id="val" onChange={(e) => handleChange(e)} defaultValue="false">
+      {operandVariable ? <Form.Label>Variable: </Form.Label> : <Form.Label>Value: </Form.Label>}
+      <Form.Select id="val" onChange={(e) => handleChange(e)} defaultValue="false" size="sm">
         <option value="true">TRUE</option>
         <option value="false">FALSE</option>
         <option value="operation">Operation...</option>

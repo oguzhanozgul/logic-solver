@@ -48,7 +48,6 @@ export default function Variable({
   };
 
   // Watch for changes in the option selected by the user and setState:
-  // const handleNameChange = (e: React.SyntheticEvent): void => {
   const handleNameChange = (e: React.SyntheticEvent): void => {
     const target = e.target as HTMLInputElement;
     const newState: variable = {
@@ -65,27 +64,20 @@ export default function Variable({
 
   return (
     <div className={`variable ${resolvedValue.value ? "truthy" : "falsy"}`}>
-      <Form>
+      <Form onSubmit={(e) => e.preventDefault()}>
         <Row>
           <Col xs={4}>
             <Form.Control
               id="name"
               type="text"
               placeholder="enter name..."
-              maxLength={5}
+              maxLength={8}
               onChange={(e) => {
-                e.preventDefault();
                 handleNameChange(e);
               }}
               value={resolvedValue.name}
+              size="sm"
             />
-            {/* <input
-        id="name"
-        maxLength={5}
-        size={5}
-        onChange={(e) => handleNameChange(e)}
-        value={resolvedValue.name}
-      /> */}
           </Col>
           <Col xs={1}>
             <Form.Label>=</Form.Label>
@@ -94,22 +86,14 @@ export default function Variable({
             <Form.Select
               onChange={(e) => handleSelectChange(e)}
               defaultValue={resolvedValue.value ? "true" : "false"}
+              size="sm"
             >
               <option value="true">TRUE</option>
               <option value="false">FALSE</option>
             </Form.Select>
-            {/* <select
-        id="val"
-        className="short-width"
-        onChange={(e) => handleSelectChange(e)}
-        defaultValue={resolvedValue.value ? "true" : "false"}
-      >
-      <option value="true">TRUE</option>
-      <option value="false">FALSE</option>
-    </select> */}
           </Col>
           <Col xs={1}>
-            <Button variant="danger" onClick={handleDeleteButtonClick}>
+            <Button variant="danger" onClick={handleDeleteButtonClick} size="sm">
               x
             </Button>
           </Col>
