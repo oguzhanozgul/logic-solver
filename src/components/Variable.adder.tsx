@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-globals */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useContext, useState } from "react";
 import { Alert, Button, Form, Modal } from "react-bootstrap";
 import "../App.css";
@@ -37,6 +35,7 @@ export default function VariableAdder(): React.ReactElement {
 
   const handleVariableNameChange = (e: React.SyntheticEvent): void => {
     const target = e.target as HTMLInputElement;
+    setAlertShow(false);
     setVariableName(target.value);
   };
 

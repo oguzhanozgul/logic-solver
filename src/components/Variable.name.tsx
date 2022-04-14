@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Alert, Button, Form, Modal } from "react-bootstrap";
 import "../App.css";
 import { VariableContext } from "../contexts/variableContext";
@@ -35,7 +35,7 @@ export default function VariableName({ givenValues, passVariableName }: Props): 
         setModalShow(false);
         return;
       }
-      // if here, there is another variable with the same name (but a different id)
+      // if here, there is another variable with the same name (including itself)
       setAlertShow(true);
       return;
     }

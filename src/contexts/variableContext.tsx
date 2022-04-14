@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 import variable from "../types/variable";
 
 type Props = {
@@ -7,24 +7,24 @@ type Props = {
 
 type VariableContextType = {
   variables: variable[];
-  addVariable: (x: string) => variable | null;
-  setVariable: (x: variable) => void;
-  removeVariable: (x: variable) => void;
-  getVariableByName: (x: string) => variable | null;
-  getVariableById: (x: number) => variable | null;
+  addVariable: (_x: string) => variable | null;
+  setVariable: (_x: variable) => void;
+  removeVariable: (_x: variable) => void;
+  getVariableByName: (_x: string) => variable | null;
+  getVariableById: (_x: number) => variable | null;
 };
 
 const defaultState: VariableContextType = {
   variables: [],
-  addVariable: (x: string): variable | null => {
+  addVariable: (_x: string): variable | null => {
     return null;
   },
-  setVariable: (x: variable) => {},
-  removeVariable: (x: variable) => {},
-  getVariableByName: (x: string): variable | null => {
+  setVariable: (_x: variable) => {},
+  removeVariable: (_x: variable) => {},
+  getVariableByName: (_x: string): variable | null => {
     return null;
   },
-  getVariableById: (x: number): variable | null => {
+  getVariableById: (_x: number): variable | null => {
     return null;
   },
 };
@@ -35,11 +35,6 @@ const VariableContext = createContext<VariableContextType>(defaultState);
 function VariableContextProvider({ children }: Props): React.ReactElement {
   const [variables, setVariables] = useState<variable[]>([]);
   const [lastId, setLastID] = useState<number>(0);
-
-  useEffect(() => {
-    console.log("Variable list:");
-    variables?.forEach((x) => console.log(x));
-  }, [variables]);
 
   const getVariableByName = (variableName: string): variable | null => {
     const indexOfVariable = variables.findIndex((element) => {

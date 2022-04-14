@@ -8,10 +8,8 @@ import VariableGroup from "./components/Variable.group";
 function App(): React.ReactElement {
   const [finalResult, setFinalResult] = useState<boolean | null>(null);
 
-  const displayFinalResult = (value: boolean): React.ReactNode => {
-    console.log(`Final result ${value}`);
+  const displayFinalResult = (value: boolean): void => {
     setFinalResult(value);
-    return { value };
   };
 
   return (
